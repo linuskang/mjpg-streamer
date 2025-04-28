@@ -1,6 +1,27 @@
 mjpg-streamer
 =============
 
+This is my fork of ``mjpg-streamer`` that I used for my Raspberry Pi 5. Below is the way I set up the stream so I could access a webcam stream over a browser.
+
+```
+sudo apt install build-essential cmake git libjpeg62-turbo-dev
+git clone https://github.com/linuskang/mjpg-streamer.git
+cd mjpg-streamer/mjpg-streamer-experimental
+make
+sudo make install
+mjpg_streamer -i "/home/lkang/mjpg-streamer/mjpg-streamer-experimental/input_uvc.so" -o "/home/lkang/mjpg-streamer/mjpg-streamer-experimental/output_http.so -p 8080"
+```
+
+You can adjust the stream resolution as shown below:
+
+```
+mjpg_streamer -i "/home/lkang/mjpg-streamer/mjpg-streamer-experimental/input_uvc.so -r 1280x720" -o "/home/lkang/mjpg-streamer/mjpg-streamer-experimental/output_http.so -p 8080"
+```
+
+That's how I set up my ``mjpg-streamer``. Below is the original ``README``
+
+=============
+
 This is a fork of http://sourceforge.net/projects/mjpg-streamer/ with added support for the Raspberry Pi camera via the input_raspicam plugin.
 
 mjpg-streamer is a command line application that copies JPEG frames from one
